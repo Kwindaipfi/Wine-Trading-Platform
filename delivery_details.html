@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #15803d;
+            --secondary-color: #166534;
+            --accent-color: #86efac;
+            --light-green: #dcfce7;
+            --text-color: #064e3b;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: var(--text-color);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-green);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            background-color: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .info-item p {
+            margin: 0.7rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        .icon {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-color);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-green);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-leaf"></i> Delivery Details</h1>
+    </header>
+
+    <div class="container">
+        <section class="producer-details">
+            <h2><i class="fas fa-wine-bottle"></i> Producer Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <p><i class="icon fas fa-user"></i><strong>Name:</strong> {{ producer.producer_name }}</p>
+                    <p><i class="icon fas fa-map-marker-alt"></i><strong>Location:</strong> {{ producer.producer_location }}</p>
+                    <p><i class="icon fas fa-compass"></i><strong>Coordinates:</strong> {{ producer.producer_latitude }}, {{ producer.producer_longitude }}</p>
+                </div>
+                <div class="info-item">
+                    <p><i class="icon fas fa-plane"></i><strong>Nearest Airport:</strong> {{ producer.producer_airport_code }}</p>
+                    <p><i class="icon fas fa-map-pin"></i><strong>Airport Coordinates:</strong> {{ producer.producer_airport_latitude }}, {{ producer.producer_airport_longitude }}</p>
+                </div>
+                <div class="info-item">
+                    <p><i class="icon fas fa-wine-glass-alt"></i><strong>Wine Type:</strong> {{ producer.wine_type }}</p>
+                    <p><i class="icon fas fa-boxes"></i><strong>Quantity:</strong> {{ producer.quantity }}</p>
+                    <p><i class="icon fas fa-dollar-sign"></i><strong>Total Cost:</strong> ${{ "%.2f"|format(producer.total_cost) }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurant-details">
+            <h2><i class="fas fa-utensils"></i> Restaurant Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <p><i class="icon fas fa-store"></i><strong>Name:</strong> {{ restaurant.restaurant_name }}</p>
+                    <p><i class="icon fas fa-map-marked-alt"></i><strong>Location:</strong> {{ restaurant.location }}</p>
+                </div>
+                <div class="info-item">
+                    <p><i class="icon fas fa-location-arrow"></i><strong>Coordinates:</strong> {{ restaurant.latitude }}, {{ restaurant.longitude }}</p>
+                    <p><i class="icon fas fa-plane-arrival"></i><strong>Nearest Airport:</strong> {{ restaurant.airport_code }}</p>
+                </div>
+                <div class="info-item">
+                    <p><i class="icon fas fa-clock"></i><strong>Opening Hours:</strong> {{ restaurant.Opening_Hours }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation">
+            <a href="{{ url_for('index') }}" class="btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Delivery Service. All rights reserved.</p>
+    </footer>
+</body>
+</html>
